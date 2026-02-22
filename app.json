@@ -2,6 +2,7 @@
   "id": "com.interqr",
   "version": "1.0.4",
   "compatibility": ">=5.0.0",
+  "forumTopicId": 151498,
   "sdk": 3,
   "name": {
     "en": "InterQR"
