@@ -1,6 +1,6 @@
 {
     "name": "com.interqr",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Control your InterQR locks from Homey.",
     "main": "app.js",
     "scripts": {
