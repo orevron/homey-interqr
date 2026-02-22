@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { padding: 1rem; font-family: sans-serif; }
+    h2 { font-size: 1.2rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+    input { width: 100%; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; background: #0084ff; color: #fff; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    .error { color: red; margin-top: 0.5rem; font-size: 0.9rem; display: none; }
+  </style>
+</head>
+<body>
+  <h2>InterQR Login</h2>
+  <p>Enter your phone number in E.164 format (e.g., +123456789).</p>
+
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="+123456789" />
+  </div>
+
+  <div id="error" class="error"></div>
+
+  <button id="nextBtn" onclick="onNext()">Request Verification Code</button>
+
+  <script>
+    Homey.setTitle('Log In');
+
+    function onNext() {
+      const phoneInput = document.getElementById('phone').value;
+      if (!phoneInput) return;
+
+      const btn = document.getElementById('nextBtn');
+      const err = document.getElementById('error');
+      
+      btn.disabled = true;
+      err.style.display = 'none';
+
+      Homey.emit('verify_phone', { phone: phoneInput })
+        .then(() => {
+          Homey.nextView();
+        })
+        .catch((error) => {
+          err.innerText = error.message || error;
+          err.style.display = 'block';
+          btn.disabled = false;
+        });
+    }
+  </script>
+</body>
+</html>

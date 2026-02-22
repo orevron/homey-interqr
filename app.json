@@ -1,0 +1,62 @@
+{
+  "id": "com.interqr",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "InterQR"
+  },
+  "description": {
+    "en": "Control your InterQR locks from Homey."
+  },
+  "category": "security",
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "permissions": [],
+  "author": {
+    "name": "InterQR Integration"
+  },
+  "drivers": [
+    {
+      "id": "interqr_lock",
+      "name": {
+        "en": "InterQR Lock"
+      },
+      "class": "lock",
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "capabilities": [
+        "locked"
+      ],
+      "images": {
+        "large": "/drivers/interqr_lock/assets/images/large.png",
+        "small": "/drivers/interqr_lock/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "phone",
+          "navigate": "verify"
+        },
+        {
+          "id": "verify",
+          "navigate": "list_devices"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
+    }
+  ]
+}
