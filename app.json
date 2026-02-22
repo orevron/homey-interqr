@@ -12,8 +12,7 @@
   },
   "category": "security",
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "images": {
     "large": "/assets/images/large.png",
