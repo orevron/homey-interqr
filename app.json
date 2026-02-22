@@ -31,8 +31,7 @@
       },
       "class": "lock",
       "platforms": [
-        "local",
-        "cloud"
+        "local"
       ],
       "capabilities": [
         "locked"
